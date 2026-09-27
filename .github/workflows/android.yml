@@ -21,6 +21,10 @@ jobs:
         run: bash ./test-core.sh
       - name: Build test APK
         run: bash ./gradlew --no-daemon :app:assembleDebug
+      - name: Check launch activity in APK
+        run: |
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk | grep -F "launchable-activity: name='com.vivekmlresearch.quantumapps.app.MainActivity'"
+          find app/build -path '*/com/vivekmlresearch/quantumapps/app/MainActivity.class' -print -quit | grep -q .
       - name: Upload test APK
         uses: actions/upload-artifact@v4
         with:
