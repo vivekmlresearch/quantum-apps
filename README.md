@@ -2,7 +2,7 @@
 
 **An offline, modular quantum computing laboratory for Android.** Learn the mathematics, assemble small circuits, examine exact amplitudes, and compare instructive algorithm experiments. This is a working educational simulator; it does not claim access to quantum hardware or quantum advantage.
 
-> **Release status:** v1.0 source and test APK. Native Android build verification is tracked by GitHub Actions. A debug APK is for hands-on testing; Play Store publication requires a separately signed Android App Bundle and store review.
+> **Release status:** v1.0.1 source and test APK. Native Android build verification is tracked by GitHub Actions. A debug APK is for hands-on testing; Play Store publication requires a separately signed Android App Bundle and store review.
 
 ## Interface previews
 
@@ -74,6 +74,9 @@ docs/previews/                    Labeled interface illustrations
 ```
 
 ## Build and test
+
+**Launch fix in 1.0.1:** The Android namespace now resolves the launcher activity to the compiled `com.vivekmlresearch.quantumapps.app.MainActivity`. CI verifies the APK launcher declaration and compiled class. Uninstall the old debug build before installing the new one: ephemeral CI debug signing certificates may differ between runs.
+
 
 1. Open this repository in Android Studio with JDK 17 and Android SDK API 36. Sync Gradle, then run the `app` configuration on a physical Android device (Android 8.0 or newer).
 2. For a quick correctness check, run `bash test-core.sh` with JDK 17. It checks Bell and GHZ probabilities, Y/T gates, the two-qubit Grover target, and QASM export.
